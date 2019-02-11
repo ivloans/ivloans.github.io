@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="Navigator Hugo Template">
+<meta name="author" content="Themefisher.com">
+<meta name="generator" content="Hugo 0.54.0" />
+
+<title>IV Loans</title>
+
+<!-- Mobile Specific Meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="https://ivloans.github.io/images/favicon.ico" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.css" />
+
+<!-- Stylesheets -->
+<!-- Themefisher Icon font -->
+<link rel="stylesheet" href="https://ivloans.github.io/plugins/themefisher-font/style.css">
+<!-- bootstrap.min css -->
+<link rel="stylesheet" href="https://ivloans.github.io/plugins/bootstrap/dist/css/bootstrap.min.css">
+<!-- Lightbox.min css -->
+<link rel="stylesheet" href="https://ivloans.github.io/plugins/lightbox2/dist/css/lightbox.min.css">
+<!-- Slick Carousel -->
+<link rel="stylesheet" href="https://ivloans.github.io/plugins/slick-carousel/slick/slick.css">
+<link rel="stylesheet" href="https://ivloans.github.io/plugins/slick-carousel/slick/slick-theme.css">
+<!-- Main Stylesheet -->
+
+
+
+
+
+<link rel="stylesheet" href="/css/style.min.css">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+</head>
+
+<body id="body">
+
+
+
+<!-- Start Preloader -->
+<div id="preloader">
+    <div class="preloader">
+            <svg  class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+    </div>
+</div>
+<!-- End Preloader -->
+
+<!-- Fixed Navigation -->
+
+
+    <section class="header navigation">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-md">
+                    
+                    <a href="https://ivloans.github.io" style="font-size: 24px; color: #2e4b81">
+                            <img src="/images/logo2.png" />
+                        IVLOANS</a>
+                    
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="tf-ion-android-menu"></span>
+                    </button>
+        
+        <div id="drapeaux">
+            
+            
+        </div>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://ivloans.github.io/apply">Apply</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://ivloans.github.io/about">About Us</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://ivloans.github.io/howitworks">How It Works</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://ivloans.github.io/commercials">TV Commercials</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://ivloans.github.io/locations">Our Locations</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://ivloans.github.io/faq">FAQ</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Page Title Section Start -->
+<section class="single-page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Apply For A Car Title Loan</h2>
+                <nav aria-label="breadcrumb mx-auto" role="navigation">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="https://ivloans.github.io">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Apply For A Car Title Loan</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-custom">
+    <div id="app">
+        <div style="text-align: center;" v-if="loading">
+            <svg  class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+        </div>
+        <div v-if="!loading">
+
+            <div v-if="success">
+                <div style="margin-top: -50px" class="app-container">
+                    <div style="text-align:center;" class="row">
+                        <div class="col-lg-12">
+                            <div style="margin: 0 auto;" class="sa">
+                                <div class="sa-success">
+                                    <div class="sa-success-tip"></div>
+                                    <div class="sa-success-long"></div>
+                                    <div class="sa-success-placeholder"></div>
+                                    <div class="sa-success-fix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Success!</h4>
+                            <p>We have received your submission and will begin processing it. We will contact you as soon as possible.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div v-if="!success">
+                <div  class="app-container" v-if="invalidZip">
+                    <h3>We're sorry</h3>
+                    <p>We do not currently provide services at your location. Please try again later.</p>
+                    <button v-on:click="reset()" class="btn cust-btn btn-default">Enter a different Zip Code</button>
+                </div>
+                <div  class="app-container" v-if="!selectedZip && !invalidZip">
+                    <h4>Let's get started!</h4>
+                    <p>First we need see if we are offering services in your area</p>
+                    <div class="contact-form">
+                        <div class="form-group">
+                            <input v-model="zipCode" type="text" placeholder="Enter your zip code" class="form-control" name="zip" id="zip">
+                            <button v-bind:class="{ disabled: zipCode == '' }" :disabled="zipCode == ''" v-on:click="zipCodeEntered()" class="btn cust-btn btn-default">Go</button>
+                        </div>
+                    </div>
+                </div>
+    
+                
+    
+                <div  class="app-container" v-if="selectedZip && !modelAccepted">
+                        
+                    <h4>You are elligible! Our service is being offered in [[selectedZip.County]], [[selectedZip.City]] </h4>
+                    <p>Select your vehicle year, make and model to continue the application</p>
+                    <div class="contact-form">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <select v-on:change="yearsChanged()" v-model="selectedYear" id="car-years" name="car-years" class="form-control">
+                                        <option value="">Select a year</option>
+                                        <option v-bind:value="year" v-for="year in years">[[year]]</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <select v-on:change="makesChanged()" v-bind:class="{ disabled: selectedYear == '' }" :disabled="selectedYear == ''" v-model="selectedMake" name="car-makes" id="car-makes" class="form-control">
+                                        <option value="">Select a make</option>
+                                        <option  v-bind:value="make.make_id" v-for="make in makes">[[make.make_display]]</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <select v-on:change="modelsChanged()" v-model="selectedModel" v-bind:class="{ disabled: selectedMake == '' }" :disabled="selectedMake == ''" class="form-control">
+                                        <option value="">Select a model</option>
+                                        <option  v-bind:value="model.model_name" v-for="model in models">[[model.model_name]]</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <select v-model="selectedTrim" v-bind:class="{ disabled: selectedModel == '' }" :disabled="selectedModel == ''" class="form-control">
+                                            <option value="">Select a trim</option>
+                                            <option value="NA">NA</option>
+                                            <option v-bind:value="trim.model_trim" v-for="trim in trims">[[trim.model_trim]]</option>
+                                        </select>
+                                    </div>
+                                </div>
+                        </div>
+    
+                        <button v-on:click="reset()" class="btn cust-btn btn-default">Back</button>
+                        <button v-bind:class="{ disabled: selectedYear == '' || selectedMake == '' || selectedModel == '' || selectedTrim == '' }" :disabled="selectedYear == '' || selectedMake == '' || selectedModel == '' || selectedTrim == ''" style="float: right;" v-on:click="acceptModel()" class="btn cust-btn btn-default">Continue</button>
+                        
+                    </div>
+                </div>
+    
+                <div class="app-container" v-if="selectedZip && modelAccepted">
+                    <h4>Final Step!</h4>
+                    <p>Fill out a few more additional fields</p>
+                    
+                    <form v-on:submit="handleSubmit" class="contact-form">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input required v-model="firstName" type="text" placeholder="First Name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input required v-model="lastName" type="text" placeholder="Last Name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input required v-model="email" type="email" placeholder="Email Address" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input required v-model="phone" type="number" placeholder="10 Digit Phone Number (ex. 0123456789)" class="form-control">
+                                </div>
+                            </div>
+    
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input required v-model="mileage" type="number" placeholder="Mileage" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <select required v-model="howHeardAboutUs" class="form-control">
+                                        <option value="">How did you hear about us?</option>
+                                        <option value="TV Ad">TV Ad</option>
+                                        <option value="TV Ad">Radio Ad</option>
+                                        <option value="TV Ad">Google</option>
+                                        <option value="TV Ad">Yahoo</option>
+                                        <option value="TV Ad">Direct Mail</option>
+                                        <option value="TV Ad">Referral</option>
+                                        <option value="TV Ad">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-12">
+                                <div class="form-check">
+                                    <input v-model="wantsToReceiveQuotes" required type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Yes, I would like to receive a quote regarding my loan application and/or other financial products that may be available to me.</label>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-12">
+                                <div class="form-check">
+                                    <input v-model="readTerms" required type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">We Value Your Privacy! Please check this box to confirm you have read our <a target="_blank" href="/pdfs/terms-and-conditions.pdf">Wireless Policy and Terms and Conditions.</a></label>
+                                </div>
+                            </div>
+                        </div>
+                        <button v-on:click="backToModels()" class="btn cust-btn btn-default">Back</button>
+                        <button type="submit" style="float: right;" class="btn cust-btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Start -->
+<footer id="footer" class="bg-one">
+    <div class="top-footer">
+        <div class="container">
+            <div class="row">
+                    
+                    <div class="col-sm-3 col-md-3 col-lg-2">
+                        <a class="nav-link-footer" href="https://ivloans.github.io/apply">Apply</a>
+                    </div>
+                    
+                    <div class="col-sm-3 col-md-3 col-lg-2">
+                        <a class="nav-link-footer" href="https://ivloans.github.io/about">About Us</a>
+                    </div>
+                    
+                    <div class="col-sm-3 col-md-3 col-lg-2">
+                        <a class="nav-link-footer" href="https://ivloans.github.io/howitworks">How It Works</a>
+                    </div>
+                    
+                    <div class="col-sm-3 col-md-3 col-lg-2">
+                        <a class="nav-link-footer" href="https://ivloans.github.io/commercials">TV Commercials</a>
+                    </div>
+                    
+                    <div class="col-sm-3 col-md-3 col-lg-2">
+                        <a class="nav-link-footer" href="https://ivloans.github.io/locations">Our Locations</a>
+                    </div>
+                    
+                    <div class="col-sm-3 col-md-3 col-lg-2">
+                        <a class="nav-link-footer" href="https://ivloans.github.io/faq">FAQ</a>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <h5>Copyright © 2019 Cash For Pink Slips. All Rights Reserved.</h5>
+        <p><strong>Loans made or arranged pursuant to a California Finance Lenders Law License # 603F798 /603-A329 / 60DBO 45992 Arizona Department of Financial Institutions Sales Finance Company License. </strong></p>
+        <p>Imperial Auto Loans, Inc. may act as the broker for the loan and may not be the direct lender.</p>
+        <h6>Design and Developed by themefisher.com
+            <br>Get More
+            <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Free Bootstrap Templates</a>
+        </h6>
+    </div>
+</footer>
+<!-- end footer -->
+
+
+<!-- Essential Scripts -->
+
+<!-- jQuery -->
+<script src="https://ivloans.github.io/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="https://ivloans.github.io/plugins/bootstrap/dist/js/popper.min.js"></script>
+<script src="https://ivloans.github.io/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Parallax -->
+<script src="https://ivloans.github.io/plugins/parallax/jquery.parallax-1.1.3.js"></script>
+<!-- lightbox -->
+<script src="https://ivloans.github.io/plugins/lightbox2/dist/js/lightbox.min.js"></script>
+<!-- Slick Carousel -->
+<script src="https://ivloans.github.io/plugins/slick-carousel/slick/slick.min.js"></script>
+<!-- Portfolio Filtering -->
+<script src="https://ivloans.github.io/plugins/mixitup/dist/mixitup.min.js"></script>
+<!-- Smooth Scroll js -->
+<script src="https://ivloans.github.io/plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+<!-- Custom js -->
+<script src="https://ivloans.github.io/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="/js/app.js"></script>
+<script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.js"></script>
+
+</body>
+
+</html>
+
+
