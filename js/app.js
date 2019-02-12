@@ -65,7 +65,7 @@ $(document).ready(() => {
                 fd.append('message', _this.contact.message)
 
                 var req = {
-                    url: 'https://formcarry.com/s/qgjptGfRApC',
+                    url: 'https://formspree.io/ivloans.help@gmail.com',
                     method: 'POST',
                     data: fd,
                     dataType: 'json',
@@ -95,7 +95,7 @@ $(document).ready(() => {
                     fd.append('lastName', _this.lastName)
                     fd.append('email', _this.email)
                     fd.append('phone', _this.phone)
-                    fd.append('zip', _this.selectedZip["Zip Code"])
+                    fd.append('zip', zipCode["Zip Code"])
                     fd.append('year', _this.selectedYear)
                     fd.append('make', _this.selectedMake)
                     fd.append('model', _this.selectedModel)
