@@ -3,10 +3,16 @@ $(document).ready(() => {
     var app = new Vue({
         el: '#app',
         data: {
+            contact: {
+                name: '',
+                email: '',
+                phone: '',
+                subject: '',
+                message: ''
+            },
             success: false,
             baseUrl: 'https://www.carqueryapi.com/api/0.3/',
-            loading: false,
-            message: 'Hello Vue!',
+            loading: true,
             locations: [],
             vehicles: [],
             years: [],
@@ -28,7 +34,9 @@ $(document).ready(() => {
             phone: '',
             howHeardAboutUs: '',
             wantsToReceiveQuotes: false,
-            readTerms: false
+            readTerms: false,
+            contactSuccess: false,
+            loadingContact: false
         },
         delimiters: ['[[', ']]'],
         created: function() {
@@ -36,6 +44,8 @@ $(document).ready(() => {
             $.getJSON("/data/locations.json", function(data) {
                 _this.locations = data.locations;
                 console.log(data.locations);
+                _this.getYears();
+                _this.loading = false;
             });
         },
         mounted: function() {
@@ -43,24 +53,16 @@ $(document).ready(() => {
             console.log(this);
         },
         methods: {
-            handleSubmit: function(e) {
+            submitContact: function(e) {
                 var _this = this;
                 e.preventDefault();
-                _this.loading = true;
+                _this.loadingContact = true;
                 var fd = new FormData();
-                fd.append('firstName', _this.firstName)
-                fd.append('lastName', _this.lastName)
-                fd.append('email', _this.email)
-                fd.append('phone', _this.phone)
-                fd.append('zip', _this.selectedZip["Zip Code"])
-                fd.append('year', _this.selectedYear)
-                fd.append('make', _this.selectedMake)
-                fd.append('model', _this.selectedModel)
-                fd.append('trim', _this.selectedTrim)
-                fd.append('mileage', _this.mileage)
-                fd.append('howTheyHeardAboutUs', _this.howHeardAboutUs)
-                fd.append('wantsToReceiveQuotes', _this.wantsToReceiveQuotes)
-                fd.append('readTerms', _this.readTerms)
+                fd.append('name', _this.contact.name)
+                fd.append('email', _this.contact.email)
+                fd.append('phone', _this.contact.phone)
+                fd.append('subject', _this.contact.subject)
+                fd.append('message', _this.contact.message)
 
                 var req = {
                     url: 'https://formcarry.com/s/qgjptGfRApC',
@@ -74,52 +76,69 @@ $(document).ready(() => {
                 $.ajax(req).done(function() {
                     console.log("IT is finished");
                     setTimeout(function() {
-                        _this.success = true;
-                        _this.loading = false;
-                    }, 1000)
+                        _this.contactSuccess = true;
+                        _this.loadingContact = false;
+                    }, 200)
                     
                 })
             },
-            acceptModel: function() {
+            handleSubmit: function(e) {
                 var _this = this;
+                e.preventDefault();
                 _this.loading = true;
-                setTimeout(function() {
-                    _this.loading = false;
-                    _this.modelAccepted = true;
-                }, 1000)
+
+                var zipCode = this.locations.find(function(x) {return x['Zip Code'].toString() == _this.zipCode.toString()});
+
+                if (zipCode) {
+                    var fd = new FormData();
+                    fd.append('firstName', _this.firstName)
+                    fd.append('lastName', _this.lastName)
+                    fd.append('email', _this.email)
+                    fd.append('phone', _this.phone)
+                    fd.append('zip', _this.selectedZip["Zip Code"])
+                    fd.append('year', _this.selectedYear)
+                    fd.append('make', _this.selectedMake)
+                    fd.append('model', _this.selectedModel)
+                    fd.append('trim', _this.selectedTrim)
+                    fd.append('mileage', _this.mileage)
+                    fd.append('howTheyHeardAboutUs', _this.howHeardAboutUs)
+                    fd.append('wantsToReceiveQuotes', _this.wantsToReceiveQuotes)
+                    fd.append('readTerms', _this.readTerms)
+
+                    var req = {
+                        url: 'https://formcarry.com/s/qgjptGfRApC',
+                        method: 'POST',
+                        data: fd,
+                        dataType: 'json',
+                        processData: false,
+                        contentType: false
+                    }
+
+                    $.ajax(req).done(function() {
+                        console.log("IT is finished");
+                        setTimeout(function() {
+                            _this.success = true;
+                            _this.loading = false;
+                        }, 1000)
+                        
+                    })
+                } else {
+                    setTimeout(function() {
+                        _this.invalidZip = true;
+                        _this.loading = false;
+                    }, 1000)
+                    
+                }
                 
-            },
-            backToModels: function() {
-                this.modelAccepted = false;
             },
             reset: function() {
                 this.invalidZip = false;
                 this.loading = false;
                 this.zipCode = '';
                 this.selectedZip = '';
-                this.selectedYear = '';
-                this.selectedMake = '';
-                this.selectedModel = '';
-            },
-            zipCodeEntered: function() {
-                this.loading = true;
-                //this.loading = true;
-                var _this = this;
-                var zipCode = this.locations.find(function(x) {return x['Zip Code'].toString() == _this.zipCode.toString()})
-
-                setTimeout(function() {
-                    if (zipCode) {
-                        _this.selectedZip = zipCode;
-                        _this.loading = false;
-                        _this.getYears();
-                    } else {
-                        _this.invalidZip = true;
-                        _this.loading = false;
-                    }
-                }, 1000)
-                
             },
             getYears: function () {
+                console.log("Get years called")
                 var _this = this;
                 $.getJSON(this.baseUrl+"?callback=?", {cmd:"getYears"}, function(data) {
                     console.log("Years");
@@ -147,6 +166,8 @@ $(document).ready(() => {
             },
             yearsChanged: function() {
                 this.selectedMake = '';
+                this.selectedModel = '';
+                this.selectedTrim = '';
                 var _year = this.selectedYear;
                 var _this = this;
                 if (_year != '') {
@@ -161,6 +182,7 @@ $(document).ready(() => {
             },
             makesChanged: function() {
                 this.selectedModel = '';
+                this.selectedTrim = '';
                 var _make = this.selectedMake;
                 var _year = this.selectedYear;
                 var _this = this;

@@ -4,9 +4,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="description" content="Navigator Hugo Template">
-<meta name="author" content="Themefisher.com">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="description" content="IV Auto Loans servicing California CA, Arizona CA and Imperial Valley">
 
 <title>IV Loans</title>
 
@@ -167,133 +165,113 @@
             <div v-if="!success">
                 <div  class="app-container" v-if="invalidZip">
                     <h3>We're sorry</h3>
-                    <p>We do not currently provide services at your location. Please try again later.</p>
+                    <p>We do not currently provide services at your location. However we are expanding to new regions, so be sure to check back soon! </p>
                     <button v-on:click="reset()" class="btn cust-btn btn-default">Enter a different Zip Code</button>
                 </div>
-                <div  class="app-container" v-if="!selectedZip && !invalidZip">
-                    <h4>Let's get started!</h4>
-                    <p>First we need see if we are offering services in your area</p>
-                    <div class="contact-form">
-                        <div class="form-group">
-                            <input v-model="zipCode" type="text" placeholder="Enter your zip code" class="form-control" name="zip" id="zip">
-                            <button v-bind:class="{ disabled: zipCode == '' }" :disabled="zipCode == ''" v-on:click="zipCodeEntered()" class="btn cust-btn btn-default">Go</button>
-                        </div>
-                    </div>
-                </div>
-    
-                
-    
-                <div  class="app-container" v-if="selectedZip && !modelAccepted">
-                        
-                    <h4>You are elligible! Our service is being offered in [[selectedZip.County]], [[selectedZip.City]] </h4>
-                    <p>Select your vehicle year, make and model to continue the application</p>
-                    <div class="contact-form">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <select v-on:change="yearsChanged()" v-model="selectedYear" id="car-years" name="car-years" class="form-control">
-                                        <option value="">Select a year</option>
-                                        <option v-bind:value="year" v-for="year in years">[[year]]</option>
-                                    </select>
-                                </div>
+                <div  class="app-container" v-if="!invalidZip">
+                    <h4>Start Your Loan Application Now</h4>
+                    <p>Our car title loan application process is fast and easy! You’re minutes away from getting the cash you need!</p>
+                    <form v-on:submit="handleSubmit">
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <input required v-model="zipCode" type="text" placeholder="Enter your zip code" class="form-control" name="zip" id="zip">
                             </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <select v-on:change="makesChanged()" v-bind:class="{ disabled: selectedYear == '' }" :disabled="selectedYear == ''" v-model="selectedMake" name="car-makes" id="car-makes" class="form-control">
-                                        <option value="">Select a make</option>
-                                        <option  v-bind:value="make.make_id" v-for="make in makes">[[make.make_display]]</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <select v-on:change="modelsChanged()" v-model="selectedModel" v-bind:class="{ disabled: selectedMake == '' }" :disabled="selectedMake == ''" class="form-control">
-                                        <option value="">Select a model</option>
-                                        <option  v-bind:value="model.model_name" v-for="model in models">[[model.model_name]]</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-6">
                                     <div class="form-group">
-                                        <select v-model="selectedTrim" v-bind:class="{ disabled: selectedModel == '' }" :disabled="selectedModel == ''" class="form-control">
-                                            <option value="">Select a trim</option>
-                                            <option value="NA">NA</option>
-                                            <option v-bind:value="trim.model_trim" v-for="trim in trims">[[trim.model_trim]]</option>
+                                        <select required v-on:change="yearsChanged()" v-model="selectedYear" id="car-years" name="car-years" class="form-control">
+                                            <option value="">Select a year</option>
+                                            <option v-bind:value="year" v-for="year in years">[[year]]</option>
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <select required v-on:change="makesChanged()" v-bind:class="{ disabled: selectedYear == '' }" :disabled="selectedYear == ''" v-model="selectedMake" name="car-makes" id="car-makes" class="form-control">
+                                            <option value="">Select a make</option>
+                                            <option  v-bind:value="make.make_id" v-for="make in makes">[[make.make_display]]</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <select required v-on:change="modelsChanged()" v-model="selectedModel" v-bind:class="{ disabled: selectedMake == '' }" :disabled="selectedMake == ''" class="form-control">
+                                            <option value="">Select a model</option>
+                                            <option  v-bind:value="model.model_name" v-for="model in models">[[model.model_name]]</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <select required v-model="selectedTrim" v-bind:class="{ disabled: selectedModel == '' }" :disabled="selectedModel == ''" class="form-control">
+                                                <option value="">Select a trim</option>
+                                                <option value="NA">NA</option>
+                                                <option v-bind:value="trim.model_trim" v-for="trim in trims">[[trim.model_trim]]</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input required v-model="firstName" type="text" placeholder="First Name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input required v-model="lastName" type="text" placeholder="Last Name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input required v-model="email" type="email" placeholder="Email Address" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input required v-model="phone" type="number" placeholder="10 Digit Phone Number (ex. 0123456789)" class="form-control">
+                                    </div>
+                                </div>
+        
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input required v-model="mileage" type="number" placeholder="Mileage" class="form-control">
+                                    </div>
+                                </div>
+            
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <select required v-model="howHeardAboutUs" class="form-control">
+                                            <option value="">How did you hear about us?</option>
+                                            <option value="TV Ad">TV Ad</option>
+                                            <option value="Radio Ad">Radio Ad</option>
+                                            <option value="Google">Google</option>
+                                            <option value="Yahoo">Yahoo</option>
+                                            <option value="Direct Mail">Direct Mail</option>
+                                            <option value="Referral">Referral</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+            
+                                <div style="margin-left: 20px;" class="col-lg-12">
+                                    <div class="form-check">
+                                        <input v-model="wantsToReceiveQuotes" required type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Yes, I would like to receive a quote regarding my loan application and/or other financial products that may be available to me.</label>
+                                    </div>
+                                </div>
+            
+                                <div style="margin-left: 20px;" class="col-lg-12">
+                                    <div class="form-check">
+                                        <input v-model="readTerms" required type="checkbox" class="form-check-input" id="exampleCheck2">
+                                        <label class="form-check-label" for="exampleCheck2">We Value Your Privacy! Please check this box to confirm you have read our <a target="_blank" href="/pdfs/terms-and-conditions.pdf">Wireless Policy and Terms and Conditions.</a></label>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <button type="submit" class="btn cust-btn btn-default">Submit</button>
+                            
                         </div>
-    
-                        <button v-on:click="reset()" class="btn cust-btn btn-default">Back</button>
-                        <button v-bind:class="{ disabled: selectedYear == '' || selectedMake == '' || selectedModel == '' || selectedTrim == '' }" :disabled="selectedYear == '' || selectedMake == '' || selectedModel == '' || selectedTrim == ''" style="float: right;" v-on:click="acceptModel()" class="btn cust-btn btn-default">Continue</button>
-                        
-                    </div>
-                </div>
-    
-                <div class="app-container" v-if="selectedZip && modelAccepted">
-                    <h4>Final Step!</h4>
-                    <p>Fill out a few more additional fields</p>
-                    
-                    <form v-on:submit="handleSubmit" class="contact-form">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input required v-model="firstName" type="text" placeholder="First Name" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input required v-model="lastName" type="text" placeholder="Last Name" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input required v-model="email" type="email" placeholder="Email Address" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input required v-model="phone" type="number" placeholder="10 Digit Phone Number (ex. 0123456789)" class="form-control">
-                                </div>
-                            </div>
-    
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input required v-model="mileage" type="number" placeholder="Mileage" class="form-control">
-                                </div>
-                            </div>
-        
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <select required v-model="howHeardAboutUs" class="form-control">
-                                        <option value="">How did you hear about us?</option>
-                                        <option value="TV Ad">TV Ad</option>
-                                        <option value="TV Ad">Radio Ad</option>
-                                        <option value="TV Ad">Google</option>
-                                        <option value="TV Ad">Yahoo</option>
-                                        <option value="TV Ad">Direct Mail</option>
-                                        <option value="TV Ad">Referral</option>
-                                        <option value="TV Ad">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-        
-                            <div class="col-lg-12">
-                                <div class="form-check">
-                                    <input v-model="wantsToReceiveQuotes" required type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Yes, I would like to receive a quote regarding my loan application and/or other financial products that may be available to me.</label>
-                                </div>
-                            </div>
-        
-                            <div class="col-lg-12">
-                                <div class="form-check">
-                                    <input v-model="readTerms" required type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">We Value Your Privacy! Please check this box to confirm you have read our <a target="_blank" href="/pdfs/terms-and-conditions.pdf">Wireless Policy and Terms and Conditions.</a></label>
-                                </div>
-                            </div>
-                        </div>
-                        <button v-on:click="backToModels()" class="btn cust-btn btn-default">Back</button>
-                        <button type="submit" style="float: right;" class="btn cust-btn btn-default">Submit</button>
                     </form>
                 </div>
             </div>
@@ -338,10 +316,7 @@
         <h5>Copyright © 2019 Cash For Pink Slips. All Rights Reserved.</h5>
         <p><strong>Loans made or arranged pursuant to a California Finance Lenders Law License # 603F798 /603-A329 / 60DBO 45992 Arizona Department of Financial Institutions Sales Finance Company License. </strong></p>
         <p>Imperial Auto Loans, Inc. may act as the broker for the loan and may not be the direct lender.</p>
-        <h6>Design and Developed by themefisher.com
-            <br>Get More
-            <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Free Bootstrap Templates</a>
-        </h6>
+        <h6>Design and Developed by themefisher.com Get More <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Free Bootstrap Templates</a></h6>
     </div>
 </footer>
 <!-- end footer -->
