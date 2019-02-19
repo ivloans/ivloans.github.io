@@ -54,27 +54,20 @@ $(document).ready(() => {
                 var _this = this;
                 e.preventDefault();
                 _this.loadingContact = true;
-                var fd = new FormData();
-                fd.append('name', _this.contact.name)
-                fd.append('email', _this.contact.email)
-                fd.append('phone', _this.contact.phone)
-                fd.append('subject', _this.contact.subject)
-                fd.append('message', _this.contact.message)
+                var _data = _this.contact;
 
                 var req = {
                     url: 'https://formspree.io/mkvrgzox',
                     method: 'POST',
-                    data: fd,
-                    dataType: 'json',
-                    processData: false,
-                    contentType: false
+                    data: _data,
+                    dataType: 'json'
                 }
 
                 $.ajax(req).done(function() {
                     setTimeout(function() {
                         _this.contactSuccess = true;
                         _this.loadingContact = false;
-                    }, 200)
+                    }, 500)
                     
                 })
             },
@@ -86,37 +79,37 @@ $(document).ready(() => {
                 var zipCode = this.locations.find(function(x) {return x['Zip Code'].toString() == _this.zipCode.toString()});
 
                 if (zipCode) {
-                    var fd = new FormData();
-                    fd.append('firstName', _this.firstName)
-                    fd.append('lastName', _this.lastName)
-                    fd.append('email', _this.email)
-                    fd.append('phone', _this.phone)
-                    fd.append('zip', zipCode["Zip Code"])
-                    fd.append('year', _this.selectedYear)
-                    fd.append('make', _this.selectedMake)
-                    fd.append('model', _this.selectedModel)
-                    fd.append('trim', _this.selectedTrim)
-                    fd.append('mileage', _this.mileage)
-                    fd.append('howTheyHeardAboutUs', _this.howHeardAboutUs)
-                    fd.append('wantsToReceiveQuotes', _this.wantsToReceiveQuotes)
-                    fd.append('readTerms', _this.readTerms)
+                    var _data = {
+                        firstName: _this.firstName,
+                        lastName: _this.lastName,
+                        email: _this.email,
+                        phone: _this.phone,
+                        zip: zipCode["Zip Code"],
+                        year: _this.selectedYear,
+                        make: _this.selectedMake,
+                        model: _this.selectedModel,
+                        trim: _this.selectedTrim,
+                        mileage: _this.mileage,
+                        howTheyHeardAboutUs: _this.howHeardAboutUs,
+                        wantsToReceiveQuotes: _this.wantsToReceiveQuotes,
+                        readTerms: _this.readTerms
+                    }
 
                     var req = {
                         url: 'https://formspree.io/mkvrgzox',
                         method: 'POST',
-                        data: fd,
-                        dataType: 'json',
-                        processData: false,
-                        contentType: false
+                        data: _data,
+                        dataType: "json"
                     }
 
                     $.ajax(req).done(function() {
                         setTimeout(function() {
                             _this.success = true;
                             _this.loading = false;
-                        }, 1000)
+                        }, 500)
                         
                     })
+
                 } else {
                     setTimeout(function() {
                         _this.invalidZip = true;
