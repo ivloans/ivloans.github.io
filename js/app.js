@@ -43,14 +43,11 @@ $(document).ready(() => {
             let _this = this;
             $.getJSON("/data/locations.json", function(data) {
                 _this.locations = data.locations;
-                console.log(data.locations);
                 _this.getYears();
                 _this.loading = false;
             });
         },
         mounted: function() {
-            console.log("This");
-            console.log(this);
         },
         methods: {
             submitContact: function(e) {
@@ -65,7 +62,7 @@ $(document).ready(() => {
                 fd.append('message', _this.contact.message)
 
                 var req = {
-                    url: 'https://formspree.io/ivloans.help@gmail.com',
+                    url: 'https://formspree.io/mkvrgzox',
                     method: 'POST',
                     data: fd,
                     dataType: 'json',
@@ -74,7 +71,6 @@ $(document).ready(() => {
                 }
 
                 $.ajax(req).done(function() {
-                    console.log("IT is finished");
                     setTimeout(function() {
                         _this.contactSuccess = true;
                         _this.loadingContact = false;
@@ -106,7 +102,7 @@ $(document).ready(() => {
                     fd.append('readTerms', _this.readTerms)
 
                     var req = {
-                        url: 'https://formcarry.com/s/qgjptGfRApC',
+                        url: 'https://formspree.io/mkvrgzox',
                         method: 'POST',
                         data: fd,
                         dataType: 'json',
@@ -115,7 +111,6 @@ $(document).ready(() => {
                     }
 
                     $.ajax(req).done(function() {
-                        console.log("IT is finished");
                         setTimeout(function() {
                             _this.success = true;
                             _this.loading = false;
@@ -138,10 +133,8 @@ $(document).ready(() => {
                 this.selectedZip = '';
             },
             getYears: function () {
-                console.log("Get years called")
                 var _this = this;
                 $.getJSON(this.baseUrl+"?callback=?", {cmd:"getYears"}, function(data) {
-                    console.log("Years");
                     var min = parseInt(data.Years.min_year);
                     var max = parseInt(data.Years.max_year);
                     var _years = [];
@@ -158,9 +151,6 @@ $(document).ready(() => {
                             }
                             return 0;
                         });
-
-                        console.log("YEARS")
-                        console.log(_years);
                     }
                  });
             },
@@ -172,8 +162,6 @@ $(document).ready(() => {
                 var _this = this;
                 if (_year != '') {
                     $.getJSON(this.baseUrl+"?callback=?", {cmd:"getMakes", year: _year}, function(data) {
-                        console.log("Makes");
-                        console.log(data.Makes);
                         if (data.Makes) {
                             _this.makes = data.Makes;
                         }
@@ -188,7 +176,6 @@ $(document).ready(() => {
                 var _this = this;
                 if (_make != '') {
                     $.getJSON(this.baseUrl+"?callback=?", {cmd:"getModels", year: _year, make: _make}, function(data) {
-                        console.log(data);
                         if (data.Models) {
                             _this.models = data.Models;
                         }
@@ -203,7 +190,6 @@ $(document).ready(() => {
                 var _this = this;
                 if (_model != '') {
                     $.getJSON(this.baseUrl+"?callback=?", {cmd:"getTrims", year: _year, make: _make, model: _model}, function(data) {
-                        console.log(data);
                         if (data.Trims) {
                             _this.trims = data.Trims;
                         }
