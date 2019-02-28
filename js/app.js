@@ -28,6 +28,7 @@ $(document).ready(() => {
             selectedTrim: '',
             mileage: null,
             modelAccepted: false,
+            agreesToMessaging: false,
             firstName: '',
             lastName: '',
             email: '',
@@ -92,7 +93,8 @@ $(document).ready(() => {
                         mileage: _this.mileage,
                         howTheyHeardAboutUs: _this.howHeardAboutUs,
                         wantsToReceiveQuotes: _this.wantsToReceiveQuotes,
-                        readTerms: _this.readTerms
+                        readTerms: _this.readTerms,
+                        agreesToMessaging: _this.agreesToMessaging
                     }
 
                     var req = {
