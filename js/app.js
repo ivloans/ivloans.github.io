@@ -1,5 +1,5 @@
 
-$(document).ready(() => {
+$(document).ready(function() {
     var app = new Vue({
         el: '#app',
         data: {
@@ -64,12 +64,16 @@ $(document).ready(() => {
                     dataType: 'json'
                 }
 
-                $.ajax(req).done(function() {
+                jQuery.ajax(req).done(function(data) {
                     setTimeout(function() {
                         _this.contactSuccess = true;
                         _this.loadingContact = false;
                     }, 500)
                     
+                }).fail(function(err) {
+                    console.log(err);
+                    _this.contactSuccess = false;
+                    _this.loadingContact = false;
                 })
             },
             handleSubmit: function(e) {
@@ -109,7 +113,10 @@ $(document).ready(() => {
                             _this.success = true;
                             _this.loading = false;
                         }, 500)
-                        
+                    }).fail(function(err) {
+                        console.log(err);
+                        _this.contactSuccess = false;
+                        _this.loadingContact = false;
                     })
 
                 } else {
