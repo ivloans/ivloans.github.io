@@ -96,6 +96,7 @@ $(document).ready(function() {
                         model: _this.selectedModel,
                         trim: _this.selectedTrim,
                         mileage: _this.mileage,
+                        desiredAmount: _this.desiredAmount,
                         howTheyHeardAboutUs: _this.howHeardAboutUs,
                         wantsToReceiveQuotes: _this.wantsToReceiveQuotes,
                         readTerms: _this.readTerms,
