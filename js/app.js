@@ -27,6 +27,7 @@ $(document).ready(function() {
             selectedModel: '',
             selectedTrim: '',
             mileage: null,
+            desiredAmount: '',
             modelAccepted: false,
             agreesToMessaging: false,
             firstName: '',

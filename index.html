@@ -75,9 +75,10 @@
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-md">
                     
-                    <a href="https://ivloans.github.io" style="width: 150px; font-size: 24px; color: #2e4b81">
+                    <a class="header-logo" href="https://ivloans.github.io">
                         <img style="width: 100%" src="/images/IV2-01.png" />
                     </a>
+                    <a href="" class="btn btn-main btn-header">877-261-6465</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="tf-ion-android-menu"></span>
@@ -131,20 +132,24 @@
     <div class="container cust-container">
         <div id="app" class="row">
             <div class="col-lg-12">
-                <div class="block">
+                <div style="padding-left: 0px" class="block">
                     
                         
                         <h2 class="hero-title" style="margin-bottom: -3px;text-align:center;">Auto Title Loans</h2>
-                        <h4 style="text-align:center;">Need Cash <span style="color: #FE1926">Now?</span> Get Approval In Less Than <span style="color: #FE1926">15 Minutes!</span></h4>
+                        <h4 class="hero-subtitle" style="text-align:center;">Need Cash <span style="color: #FE1926">Now?</span> Get Approval In Less Than <span style="color: #FE1926">15 Minutes!</span></h4>
+                        <div class="hero-words">
+                            <h4>Best rates in the industry</h4>
+                        </div>
                         <div style="margin-bottom: 10px;text-align:center;" >
                             <a class="hero-phone" style="font-size: 24px;" href="tel:8772616467">877-261-6465</a> <br />
                             <div class="phone-links">
-                                <a href="tel:8772616465" style="margin:10px" class="btn btn-main">Call Now</a>
-                                <a href="sms:7602354912" style="margin:10px" class="btn btn-main">Send a message</a>
+                                
+                                <a href="sms:7602354912" style="margin:10px" class="btn btn-main send-message">Send a message</a>
                             </div>
                             
                             
                         </div>
+                        
                         <div class="hero-paragraph">
                             <p>
                                 Car Title Loans From $2,510 to $25,000* And Receive Approval In Minutes. 
@@ -231,16 +236,31 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6">
-                                                    <div class="form-group">
-                                                        <select required v-model="selectedTrim" v-bind:class="{ disabled: selectedModel == '' }" :disabled="selectedModel == ''" class="form-control">
-                                                            <option value="">Select a trim</option>
-                                                            <option value="NA">NA</option>
-                                                            <option v-bind:value="trim.model_trim" v-for="trim in trims">[[trim.model_trim]]</option>
-                                                        </select>
-                                                    </div>
+                                                <div class="form-group">
+                                                    <select required v-model="selectedTrim" v-bind:class="{ disabled: selectedModel == '' }" :disabled="selectedModel == ''" class="form-control">
+                                                        <option value="">Select a trim</option>
+                                                        <option value="NA">NA</option>
+                                                        <option v-bind:value="trim.model_trim" v-for="trim in trims">[[trim.model_trim]]</option>
+                                                    </select>
                                                 </div>
+                                            </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="form-group">
+                                                    <input required v-model="mileage" type="number" placeholder="Mileage" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="form-group">
+                                                    <input required v-model="desiredAmount" type="number" placeholder="Desired Amount" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="form-group">
+                                                    <input required v-model="zipCode" type="number" placeholder="zip code" class="form-control" name="zip" id="zip">
+                                                </div>
+                                            </div>
                                             <div class="col-lg-3 col-md-6">
                                                 <div class="form-group">
                                                     <input required v-model="firstName" type="text" placeholder="First Name" class="form-control">
@@ -256,24 +276,14 @@
                                                     <input required v-model="email" type="email" placeholder="Email Address" class="form-control">
                                                 </div>
                                             </div>
+                                            
                                             <div class="col-lg-3 col-md-6">
                                                 <div class="form-group">
-                                                    <input required v-model="zipCode" type="number" placeholder="Enter your zip code" class="form-control" name="zip" id="zip">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-group">
-                                                    <input required v-model="phone" type="number" placeholder="10 Digit Phone Number (ex. 0123456789)" class="form-control">
-                                                </div>
-                                            </div>
-                    
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-group">
-                                                    <input required v-model="mileage" type="number" placeholder="Mileage" class="form-control">
+                                                    <input required v-model="phone" type="number" placeholder="Mobile phone" class="form-control">
                                                 </div>
                                             </div>
                         
-                                            <div class="col-lg-4 col-md-12">
+                                            <div class="col-lg-3 col-md-6">
                                                 <div class="form-group">
                                                     <select required v-model="howHeardAboutUs" class="form-control">
                                                         <option value="">How did you hear about us?</option>

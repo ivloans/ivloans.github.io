@@ -75,9 +75,10 @@
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-md">
                     
-                    <a href="https://ivloans.github.io" style="width: 150px; font-size: 24px; color: #2e4b81">
+                    <a class="header-logo" href="https://ivloans.github.io">
                         <img style="width: 100%" src="/images/IV2-01.png" />
                     </a>
+                    <a href="" class="btn btn-main btn-header">877-261-6465</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="tf-ion-android-menu"></span>
@@ -186,11 +187,8 @@
                     <p>Our car title loan application process is fast and easy! You’re minutes away from getting the cash you need!</p>
                     <form v-on:submit="handleSubmit">
                         <div class="contact-form">
-                            <div class="form-group">
-                                <input required v-model="zipCode" type="text" placeholder="Enter your zip code" class="form-control" name="zip" id="zip">
-                            </div>
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-3 col-md-6">
                                     <div class="form-group">
                                         <select required v-on:change="yearsChanged()" v-model="selectedYear" id="car-years" name="car-years" class="form-control">
                                             <option value="">Select a year</option>
@@ -198,7 +196,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3 col-md-6">
                                     <div class="form-group">
                                         <select required v-on:change="makesChanged()" v-bind:class="{ disabled: selectedYear == '' }" :disabled="selectedYear == ''" v-model="selectedMake" name="car-makes" id="car-makes" class="form-control">
                                             <option value="">Select a make</option>
@@ -206,7 +204,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3 col-md-6">
                                     <div class="form-group">
                                         <select required v-on:change="modelsChanged()" v-model="selectedModel" v-bind:class="{ disabled: selectedMake == '' }" :disabled="selectedMake == ''" class="form-control">
                                             <option value="">Select a model</option>
@@ -214,45 +212,55 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <select required v-model="selectedTrim" v-bind:class="{ disabled: selectedModel == '' }" :disabled="selectedModel == ''" class="form-control">
-                                                <option value="">Select a trim</option>
-                                                <option value="NA">NA</option>
-                                                <option v-bind:value="trim.model_trim" v-for="trim in trims">[[trim.model_trim]]</option>
-                                            </select>
-                                        </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="form-group">
+                                        <select required v-model="selectedTrim" v-bind:class="{ disabled: selectedModel == '' }" :disabled="selectedModel == ''" class="form-control">
+                                            <option value="">Select a trim</option>
+                                            <option value="NA">NA</option>
+                                            <option v-bind:value="trim.model_trim" v-for="trim in trims">[[trim.model_trim]]</option>
+                                        </select>
                                     </div>
+                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input required v-model="firstName" type="text" placeholder="First Name" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input required v-model="lastName" type="text" placeholder="Last Name" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input required v-model="email" type="email" placeholder="Email Address" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input required v-model="phone" type="number" placeholder="10 Digit Phone Number (ex. 0123456789)" class="form-control">
-                                    </div>
-                                </div>
-        
-                                <div class="col-lg-6">
+                                <div class="col-lg-3 col-md-6">
                                     <div class="form-group">
                                         <input required v-model="mileage" type="number" placeholder="Mileage" class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="form-group">
+                                        <input required v-model="desiredAmount" type="number" placeholder="Desired Amount" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="form-group">
+                                        <input required v-model="zipCode" type="number" placeholder="zip code" class="form-control" name="zip" id="zip">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="form-group">
+                                        <input required v-model="firstName" type="text" placeholder="First Name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="form-group">
+                                        <input required v-model="lastName" type="text" placeholder="Last Name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="form-group">
+                                        <input required v-model="email" type="email" placeholder="Email Address" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="form-group">
+                                        <input required v-model="phone" type="number" placeholder="Mobile phone" class="form-control">
+                                    </div>
+                                </div>
             
-                                <div class="col-lg-6">
+                                <div class="col-lg-3 col-md-6">
                                     <div class="form-group">
                                         <select required v-model="howHeardAboutUs" class="form-control">
                                             <option value="">How did you hear about us?</option>
@@ -266,23 +274,30 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div style="margin-left: 20px;" class="col-lg-12">
+                                    <div class="form-check">
+                                        <input v-model="agreesToMessaging" required type="checkbox" class="form-check-input" id="agrees-to-messaging">
+                                        <label style="font-size: 14px; color: black;" class="form-check-label" for="agrees-to-messaging">By checking this box I agree to SMS Messaging</label>
+                                    </div>
+                                </div>
             
                                 <div style="margin-left: 20px;" class="col-lg-12">
                                     <div class="form-check">
                                         <input v-model="wantsToReceiveQuotes" required type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Yes, I would like to receive a quote regarding my loan application and/or other financial products that may be available to me.</label>
+                                        <label style="font-size: 14px; color: black;" class="form-check-label" for="exampleCheck1">Yes, I would like to receive a quote regarding my loan application and/or other financial products that may be available to me.</label>
                                     </div>
                                 </div>
             
                                 <div style="margin-left: 20px;" class="col-lg-12">
                                     <div class="form-check">
                                         <input v-model="readTerms" required type="checkbox" class="form-check-input" id="exampleCheck2">
-                                        <label class="form-check-label" for="exampleCheck2">We Value Your Privacy! Please check this box to confirm you have read our <a target="_blank" href="/pdfs/terms-and-conditions.pdf">Wireless Policy and Terms and Conditions.</a></label>
+                                        <label style="font-size: 14px; color: black;" class="form-check-label" for="exampleCheck2">We Value Your Privacy! Please check this box to confirm you have read our <a target="_blank" href="/pdfs/terms-and-conditions.pdf">Wireless Policy and Terms and Conditions.</a></label>
                                     </div>
                                 </div>
                             </div>
         
-                            <button type="submit" class="btn cust-btn btn-default">Submit</button>
+                            <button style="margin-top:30px"type="submit" class="btn btn-main">Apply Now</button>
                             
                         </div>
                     </form>
