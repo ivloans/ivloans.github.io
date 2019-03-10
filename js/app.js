@@ -109,7 +109,7 @@ $(document).ready(function() {
                         data: _data,
                         dataType: "json"
                     }
-
+                    
                     $.ajax(req).done(function() {
                         setTimeout(function() {
                             _this.success = true;

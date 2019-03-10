@@ -146,7 +146,166 @@
     </div>
 </section>
 
-<section class="section section-custom">
+<section style="padding-top: 50px" class="section section-custom">
+        <div id="app">
+                <div style="text-align: center;" v-if="loading">
+                    <svg  class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                </div>
+                <div v-if="!loading">
+        
+                    <div v-if="success">
+                        <div style="margin-top: -50px" class="app-container">
+                            <div style="text-align:center;" class="row">
+                                <div class="col-lg-12">
+                                    <div style="margin: 0 auto;" class="sa">
+                                        <div class="sa-success">
+                                            <div class="sa-success-tip"></div>
+                                            <div class="sa-success-long"></div>
+                                            <div class="sa-success-placeholder"></div>
+                                            <div class="sa-success-fix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h4>Success!</h4>
+                                    <p>We have received your submission and will begin processing it. We will contact you as soon as possible.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+        
+                    <div v-if="!success">
+                        <div  class="app-container" v-if="invalidZip">
+                            <h3>We're sorry</h3>
+                            <p>We do not currently provide services at your location. However we are expanding to new regions, so be sure to check back soon! </p>
+                            <button v-on:click="reset()" class="btn cust-btn btn-default">Enter a different Zip Code</button>
+                        </div>
+                        <div  class="app-container" v-if="!invalidZip">
+                            <h4>Start Your Loan Application Now</h4>
+                            <p>Our car title loan application process is fast and easy! You’re minutes away from getting the cash you need!</p>
+                            <form v-on:submit="handleSubmit">
+                                <div class="contact-form">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <select required v-on:change="yearsChanged()" v-model="selectedYear" id="car-years" name="car-years" class="form-control">
+                                                    <option value="">Select a year</option>
+                                                    <option v-bind:value="year" v-for="year in years">[[year]]</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <select required v-on:change="makesChanged()" v-bind:class="{ disabled: selectedYear == '' }" :disabled="selectedYear == ''" v-model="selectedMake" name="car-makes" id="car-makes" class="form-control">
+                                                    <option value="">Select a make</option>
+                                                    <option  v-bind:value="make.make_id" v-for="make in makes">[[make.make_display]]</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <select required v-on:change="modelsChanged()" v-model="selectedModel" v-bind:class="{ disabled: selectedMake == '' }" :disabled="selectedMake == ''" class="form-control">
+                                                    <option value="">Select a model</option>
+                                                    <option  v-bind:value="model.model_name" v-for="model in models">[[model.model_name]]</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <select required v-model="selectedTrim" v-bind:class="{ disabled: selectedModel == '' }" :disabled="selectedModel == ''" class="form-control">
+                                                    <option value="">Select a trim</option>
+                                                    <option value="NA">NA</option>
+                                                    <option v-bind:value="trim.model_trim" v-for="trim in trims">[[trim.model_trim]]</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <input required v-model="mileage" type="number" placeholder="Mileage" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <input required v-model="desiredAmount" type="number" placeholder="Desired Amount" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <input required v-model="zipCode" type="number" placeholder="zip code" class="form-control" name="zip" id="zip">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <input required v-model="firstName" type="text" placeholder="First Name" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <input required v-model="lastName" type="text" placeholder="Last Name" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <input required v-model="email" type="email" placeholder="Email Address" class="form-control">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <input required v-model="phone" type="number" placeholder="Mobile phone" class="form-control">
+                                            </div>
+                                        </div>
+                    
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="form-group">
+                                                <select required v-model="howHeardAboutUs" class="form-control">
+                                                    <option value="">How did you hear about us?</option>
+                                                    <option value="TV Ad">TV Ad</option>
+                                                    <option value="Radio Ad">Radio Ad</option>
+                                                    <option value="Google">Google</option>
+                                                    <option value="Yahoo">Yahoo</option>
+                                                    <option value="Direct Mail">Direct Mail</option>
+                                                    <option value="Referral">Referral</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+        
+                                        <div style="margin-left: 20px;" class="col-lg-12">
+                                            <div class="form-check">
+                                                <input v-model="agreesToMessaging" required type="checkbox" class="form-check-input" id="agrees-to-messaging">
+                                                <label style="font-size: 14px; color: black;" class="form-check-label" for="agrees-to-messaging">By checking this box I agree to SMS Messaging</label>
+                                            </div>
+                                        </div>
+                    
+                                        <div style="margin-left: 20px;" class="col-lg-12">
+                                            <div class="form-check">
+                                                <input v-model="wantsToReceiveQuotes" required type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label style="font-size: 14px; color: black;" class="form-check-label" for="exampleCheck1">Yes, I would like to receive a quote regarding my loan application and/or other financial products that may be available to me.</label>
+                                            </div>
+                                        </div>
+                    
+                                        <div style="margin-left: 20px;" class="col-lg-12">
+                                            <div class="form-check">
+                                                <input v-model="readTerms" required type="checkbox" class="form-check-input" id="exampleCheck2">
+                                                <label style="font-size: 14px; color: black;" class="form-check-label" for="exampleCheck2">We Value Your Privacy! Please check this box to confirm you have read our <a target="_blank" href="/pdfs/terms-and-conditions.pdf">Wireless Policy and Terms and Conditions.</a></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                
+                                    <button style="margin-top:30px"type="submit" class="btn btn-main">Apply Now</button>
+                                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
     <div class="app-container">
         
             
@@ -246,7 +405,7 @@
 
         
 
-        <a class="btn btn-main" href="/apply">Apply Today!</a>
+        
     </div>
 </section>
 
